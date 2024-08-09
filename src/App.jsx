@@ -1,10 +1,12 @@
 import './App.css';
-import Footer from './components/Footer/Footer';
+
 
 function App() {
   return (
-    <div>
-     <Footer/>
+
+
+    <div className='bg-amber-100 h-full flex justify-center '>
+    
     </div>
   );
 }
