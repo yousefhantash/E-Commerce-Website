@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookie from 'cookie-universal';
 import { useState } from "react";
+import Form from 'react-bootstrap/Form';
 import { baseURL, LOGIN } from "../../API/Api";
 import Loading from "../../Components/Loading/Loading";
 import './Auth.css';
@@ -64,35 +65,33 @@ export default function Login() {
         <>
             {loading && <Loading />}
             <div className="container">
-                <div className="row h-100">
-                    <form className="form" onSubmit={handleSubmit}>
+                <div className="row" style = {{height: '100vh'}}>
+                    <Form className="form" onSubmit={handleSubmit}>
                         <h1>Login Now</h1>
                         <div className="custom-form">
-                            <div className="form-control">
-                                <input 
-                                    id="email" 
-                                    type="email" 
-                                    placeholder="Enter Your Email" 
-                                    value={form.email}
-                                    name='email'
-                                    onChange={handleChange}
-                                    required
+                            <Form.Group className="form-custom" controlId="exampleForm.ControlInput1">
+                                <Form.Control 
+                                type="email" 
+                                placeholder="Enter Your Email" 
+                                value={form.email}
+                                name="email"
+                                onChange={handleChange}
+                                required
                                 />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="form-control">
-                                <input 
-                                    id="password" 
-                                    type="password" 
-                                    placeholder="Enter Your Password" 
-                                    value={form.password}
-                                    name="password"
-                                    onChange={handleChange}
-                                    required
-                                    minLength={8}
+                                <Form.Label>Email</Form.Label>
+                            </Form.Group>
+                            <Form.Group className="form-custom" controlId="exampleForm.ControlInput2">
+                                <Form.Control 
+                                type="password" 
+                                placeholder="Enter Your Password" 
+                                value={form.password}
+                                name="password"
+                                onChange={handleChange}
+                                required
+                                minLength='6'
                                 />
-                                <label htmlFor="password">Password</label>
-                            </div>
+                                <Form.Label>Password</Form.Label>
+                            </Form.Group>
                             <button className="btn btn-primary" type="submit">Login</button>
                             <div className="google-btn">
                                 <a href={`http://127.0.0.1:8000/login-google`}>
@@ -110,7 +109,7 @@ export default function Login() {
                             </div>
                             {err && <span className="error">{err}</span>}
                         </div>
-                    </form> 
+                    </Form> 
                 </div> 
             </div>
         </>
